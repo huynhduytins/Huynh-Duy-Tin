@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { MdSwapVert, MdOutlineArrowDownward } from "react-icons/md";
+import { useMode } from "../../../context/AppContext";
+import IconButton from "@mui/material/IconButton";
 
 const SwapButton = () => {
+  const { handleSwapToken } = useMode();
   const [isHover, setIsHover] = useState<boolean>(false);
+
   return (
-    <button
-      className="bg-primary-500 w-9 h-9 rounded-full flex items-center justify-center hover:bg-primary-100"
+    <IconButton
+      className="background-light text-dark-100 w-9 h-9 rounded-full flex items-center justify-center"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      onClick={handleSwapToken}
     >
       {isHover ? (
-        <MdSwapVert className="text-white text-xl" />
+        <MdSwapVert className="text-xl" />
       ) : (
-        <MdOutlineArrowDownward className="text-white text-lg" />
+        <MdOutlineArrowDownward className="text-lg" />
       )}
-    </button>
+    </IconButton>
   );
 };
 
