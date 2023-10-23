@@ -11,7 +11,7 @@ var sum_to_n_b = function (n) {
 
 // time complexity: O(n)
 var sum_to_n_c = function (n) {
-  var sum = 0
+  let sum = 0
   for (let i = 1; i <= n; i++) {
     sum += i
   }
