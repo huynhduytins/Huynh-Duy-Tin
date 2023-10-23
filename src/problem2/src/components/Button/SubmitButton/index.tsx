@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import { useMode } from '../../../context/AppContext'
 
 const SubmitButton = () => {
@@ -11,15 +12,25 @@ const SubmitButton = () => {
       </div>
     </button>
   ) : (
-    <button
-      className="w-full h-12 bg-light-500 rounded-2xl text-white dark:text-dark-400 hover:"
+    <Button
+      variant="contained"
+      className="w-full h-12  dark:text-dark-400"
+      sx={{
+        borderRadius: '0.7rem',
+        backgroundColor: '#7B8EC8',
+        ':hover': {
+          backgroundColor: '#869bda',
+        },
+      }}
       onClick={() => {
         setIsSwapping(true)
         handleSubmitSwap()
       }}
     >
-      CONFIRM SWAP
-    </button>
+      <span className="dark:text-dark-400 font-bold font-kanit">
+        CONFIRM SWAP
+      </span>
+    </Button>
   )
 }
 

@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import { EDateTimeFormat } from '../types'
 import { Id, toast, ToastOptions } from 'react-toastify'
-import { error } from 'console'
 
 export const convertDate = (input: string): string => {
   const dateTime = dayjs(input)

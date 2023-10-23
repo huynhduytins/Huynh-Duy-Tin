@@ -4,7 +4,7 @@ import { InputAdornment, TextField } from '@mui/material'
 import { useRef, useEffect, useState } from 'react'
 import ListToken from './ListToken'
 import { useMode } from '../../context/AppContext'
-import { TToken, TTokenList } from '../../types'
+import { TTokenList } from '../../types'
 
 interface IFormSearch {
   onClose: () => void
@@ -63,10 +63,10 @@ const FormSearch = ({ onClose, isToToken, handleChosenToken }: IFormSearch) => {
   return (
     <div className="w-[500px] h-[65vh] relative">
       <IoIosArrowBack
-        className="absolute top-[14px] left-5 w-5 h-5 cursor-pointer z-10"
+        className="absolute top-5 left-5 w-5 h-5 cursor-pointer z-10"
         onClick={onClose}
       />
-      <div className="absolute w-full top-12 left-1/2 font-kanit transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-5">
+      <div className="absolute w-full top-14 left-1/2 font-kanit transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-5">
         <h1 className="font-bold w-full text-xl text-center">Select Token</h1>
         <TextField
           inputRef={ref}

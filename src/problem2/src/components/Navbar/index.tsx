@@ -1,5 +1,5 @@
-import { FaFileWaveform } from "react-icons/fa6";
-import Mode from "./Mode";
+import { FaFileWaveform } from 'react-icons/fa6'
+import Mode from './Mode'
 
 const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
       <Mode />
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
