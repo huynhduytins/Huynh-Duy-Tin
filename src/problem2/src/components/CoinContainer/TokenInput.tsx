@@ -1,29 +1,35 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { useMode } from "../../context/AppContext";
-import { useState, useEffect } from "react";
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import { useMode } from '../../context/AppContext'
+import { useState, useEffect } from 'react'
 interface ITokenInput {
-  isDisable?: boolean;
-  toTokenAmount?: string;
+  isDisable?: boolean
+  toTokenAmount?: string
 }
 
 const TokenInput = ({ isDisable, toTokenAmount }: ITokenInput) => {
-  const { mode, handleCalcSwapToken, isSwapping } = useMode();
-  const [numToken, setNumToken] = useState<string>("");
+  const { mode, setIsSwapping, setFromTokenAmount, fromToken } = useMode()
+  const [numToken, setNumToken] = useState<string>('')
 
   useEffect(() => {
     if (!isDisable) {
-      const delayDebounceFn = setTimeout(() => {
-        handleCalcSwapToken(numToken);
-      }, 1000);
+      setIsSwapping(true)
 
-      return () => clearTimeout(delayDebounceFn);
+      const delayDebounceFn = setTimeout(() => {
+        setFromTokenAmount(numToken)
+      }, 500)
+
+      return () => clearTimeout(delayDebounceFn)
     }
-  }, [numToken]);
+  }, [numToken])
 
   return (
     <div className="flex gap-2 p-3 py-5 items-center">
-      <Button variant="text" className={`${isDisable ? "invisible" : ""}`}>
+      <Button
+        variant="text"
+        className={`${isDisable ? 'invisible' : ''}`}
+        onClick={() => setNumToken(fromToken?.amount.toString() || '0')}
+      >
         <p className="font-bold font-kanit text-sm dark:text-light-850">Max</p>
       </Button>
       <TextField
@@ -32,28 +38,30 @@ const TokenInput = ({ isDisable, toTokenAmount }: ITokenInput) => {
           disableUnderline: true,
           inputProps: { min: 0 },
         }}
-        value={isSwapping ? "" : toTokenAmount !== "0" ? toTokenAmount : ""}
+        value={isDisable ? (toTokenAmount ? toTokenAmount : '0') : numToken}
         disabled={isDisable}
         placeholder="0"
         variant="standard"
         className="flex-1"
         onChange={(e) => {
-          setNumToken(e.target.value);
+          setNumToken(e.target.value)
         }}
         sx={{
-          ".MuiInputBase-input": {
-            fontWeight: "bold",
-            fontFamily: "Kanit",
-            color: `${mode === "dark" ? "#FDFDFD" : ""}`,
-            marginLeft: `${isDisable ? "-20px" : ""}`,
+          '.MuiInputBase-input': {
+            fontWeight: 'bold',
+            fontFamily: 'Kanit',
+            color: `${mode === 'dark' ? '#FDFDFD' : '#27262c'}`,
+            marginLeft: `${isDisable ? '-20px' : ''}`,
           },
-          ".Mui-disabled": {
-            "-webkit-text-fill-color": "#FDFDFD",
+          '.Mui-disabled': {
+            '-webkit-text-fill-color': `${
+              mode === 'dark' ? '#FDFDFD' : '#27262c'
+            }`,
           },
         }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default TokenInput;
+export default TokenInput

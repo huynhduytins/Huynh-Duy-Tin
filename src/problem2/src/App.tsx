@@ -1,6 +1,6 @@
-import "./App.css";
-import Form from "./components/Form";
-import Navbar from "./components/Navbar";
+import './App.css'
+import Form from './components/Form'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Navbar />
       <Form />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
