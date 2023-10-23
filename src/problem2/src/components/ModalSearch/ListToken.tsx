@@ -5,13 +5,13 @@ import {
   ListItemAvatar,
   ListItemButton,
   ListItemText,
-} from '@mui/material'
-import { blue } from '@mui/material/colors'
-import { TToken, TTokenList } from '../../types'
+} from "@mui/material";
+import { blue } from "@mui/material/colors";
+import { TToken, TTokenList } from "../../types";
 
 interface IListToken {
-  chosenTokenList: TTokenList[] | undefined
-  handleChosenToken: (value: TTokenList | undefined) => void
+  chosenTokenList: TTokenList[] | undefined;
+  handleChosenToken: (value: TTokenList | undefined) => void;
 }
 
 const ListToken = ({ chosenTokenList, handleChosenToken }: IListToken) => {
@@ -23,13 +23,13 @@ const ListToken = ({ chosenTokenList, handleChosenToken }: IListToken) => {
             <ListItem
               disableGutters
               key={token.currency + idx}
-              sx={{ width: '90%' }}
+              sx={{ width: "90%" }}
             >
               <ListItemButton
                 onClick={() => handleChosenToken(token)}
                 sx={{
-                  borderRadius: '5px',
-                  backgroundColor: idx === 0 ? '#E5E5E5' : '#fff',
+                  borderRadius: "5px",
+                  backgroundColor: idx === 0 ? "#E5E5E5" : "#fff",
                 }}
                 disabled={idx === 0}
               >
@@ -40,7 +40,8 @@ const ListToken = ({ chosenTokenList, handleChosenToken }: IListToken) => {
                 </ListItemAvatar>
                 <ListItemText
                   primary={token.currency}
-                  sx={{ '.MuiTypography-root': { fontFamily: 'Kanit' } }}
+                  sx={{ ".MuiTypography-root": { fontFamily: "Kanit" } }}
+                  className="max-sm:invisible"
                 />
                 <p>{token.amount}</p>
               </ListItemButton>
@@ -51,7 +52,7 @@ const ListToken = ({ chosenTokenList, handleChosenToken }: IListToken) => {
         )}
       </List>
     </div>
-  )
-}
+  );
+};
 
-export default ListToken
+export default ListToken;
